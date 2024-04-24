@@ -26,7 +26,10 @@ def forward_message(message):
                     #"-note order len = None-"
                     pass
                 if noted == True:
-                    archive_message_form = 'ctitle::'+message.chat.title+'\n'+'cUName::'+message.chat.username+'\n'+'cId::'+str(message.chat.id)+'\n'+'fName::'+message.from_user.first_name+'\n'+'uName::'+message.from_user.username+'\n'+'uId::'+str(message.from_user.id)+'\n'+'uMessage::'+final_text_note 
+                     if message.chat.type != 'private':
+                        archive_message_form = 'ctitle::'+message.chat.title+'\n'+'cUName::'+message.chat.username+'\n'+'cId::'+str(message.chat.id)+'\n'+'fName::'+message.from_user.first_name+'\n'+'uName::'+message.from_user.username+'\n'+'uId::'+str(message.from_user.id)+'\n'+'uMessage::'+final_text_note 
+                    else:
+                        archive_message_form = 'ctitle::'+'Bot_private'+'\n'+'cUName::'+message.chat.username+'\n'+'cId::'+str(message.chat.id)+'\n'+'fName::'+message.from_user.first_name+'\n'+'uName::'+message.from_user.username+'\n'+'uId::'+str(message.from_user.id)+'\n'+'uMessage::'+final_text_note 
                     bot.send_message(destination_channel_id, archive_message_form)
                     note_report_to_user = f"{final_text_note} is saved"
                     bot.reply_to(message, note_report_to_user)
