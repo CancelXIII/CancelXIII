@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+TOKEN = 'your token here'
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
@@ -83,4 +84,4 @@ async def message_listener(message):
           note_report_to_user = f"Ya Ho .. \n\tYour Memo\n\t\twas shared"
         await message.reply(note_report_to_user)
 
-bot.run(token)
+bot.run(TOKEN)
